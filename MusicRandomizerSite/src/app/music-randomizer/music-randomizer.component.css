@@ -8,6 +8,13 @@ body {
   overflow: hidden;
 }
 
+.centered-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
 .music-randomizer {
   max-width: 680px;
   margin: 0 auto;

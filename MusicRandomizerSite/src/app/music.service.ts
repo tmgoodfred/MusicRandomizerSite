@@ -7,10 +7,12 @@ import { MusicDataService } from './music-data.service';
 export class MusicService {
   constructor(private musicData: MusicDataService) {}
 
-  getRandomBPM(genre: keyof typeof this.musicData.genreBPMRanges): number {
-    const bpmRange = this.musicData.genreBPMRanges[genre];
-    if (!bpmRange) throw new Error('Genre not found');
-    return Math.floor(Math.random() * (bpmRange.MaxBPM - bpmRange.MinBPM + 1)) + bpmRange.MinBPM;
+  getRandomBPM(genre: string, subgenre: string): number {
+    const bpmRange = this.musicData.getBPMRange(genre, subgenre);
+    if (bpmRange) {
+      return Math.floor(Math.random() * (bpmRange.MaxBPM - bpmRange.MinBPM + 1)) + bpmRange.MinBPM;
+    }
+    return 120;
   }
 
   generateChordProgression(notesInKey: string[]): string[] {

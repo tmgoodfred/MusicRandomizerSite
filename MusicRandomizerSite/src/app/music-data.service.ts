@@ -171,6 +171,15 @@ export class MusicDataService {
     "Celtic": { MinBPM: 100, MaxBPM: 160 }
   };
 
+  RockGenre = {
+    'Classic Rock': { MinBPM: 110, MaxBPM: 140 },
+    'Hard Rock': { MinBPM: 120, MaxBPM: 150 },
+    'Progressive Rock': { MinBPM: 100, MaxBPM: 130 },
+    'Punk Rock': { MinBPM: 160, MaxBPM: 200 },
+    'Alternative Rock': { MinBPM: 110, MaxBPM: 140 },
+    'Indie Rock': { MinBPM: 100, MaxBPM: 130 }
+  };
+
   getMainGenres(): string[] {
     return [
       "Electronic", 

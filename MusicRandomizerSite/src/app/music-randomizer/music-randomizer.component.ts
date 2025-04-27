@@ -1,11 +1,15 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { MusicService } from '../music.service';
 import { MusicDataService } from '../music-data.service';
 
 @Component({
   selector: 'app-music-randomizer',
   templateUrl: './music-randomizer.component.html',
-  styleUrls: ['./music-randomizer.component.css']
+  styleUrls: ['./music-randomizer.component.css'],
+  standalone: true,
+  imports: [CommonModule, FormsModule]
 })
 export class MusicRandomizerComponent {
   genre = '';
@@ -21,10 +25,15 @@ export class MusicRandomizerComponent {
   vibe = '';
   melody = '';
 
-  constructor(private musicService: MusicService, public musicData: MusicDataService) {
-    this.genreOptions = this.musicData.getMainGenres();
-    this.selectedGenre = '';
-  }
+private musicService: MusicService;
+public musicData: MusicDataService;
+
+constructor(musicService: MusicService, musicData: MusicDataService) {
+  this.musicService = musicService;
+  this.musicData = musicData;
+  this.genreOptions = this.musicData.getMainGenres();
+  this.selectedGenre = '';
+}
 
   onGenreChange() {
   }
