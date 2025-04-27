@@ -4,8 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class MusicDataService {
-  // Convert all your C# dictionaries and lists to TypeScript structures
-  genreBPMRanges = {
+  ElectronicGenre = {
     "House": { MinBPM: 115, MaxBPM: 130 },
     "Deep House": { MinBPM: 120, MaxBPM: 125 },
     "Tech House": { MinBPM: 120, MaxBPM: 130 },
@@ -77,6 +76,169 @@ export class MusicDataService {
     "Minimal Wave": { MinBPM: 110, MaxBPM: 130 },
     "Dream Pop": { MinBPM: 60, MaxBPM: 100 }
   };
+
+  CountryGenre = {
+    "Traditional Country": { MinBPM: 70, MaxBPM: 120 },
+    "Modern Country": { MinBPM: 75, MaxBPM: 130 },
+    "Outlaw Country": { MinBPM: 80, MaxBPM: 120 },
+    "Country Pop": { MinBPM: 90, MaxBPM: 130 },
+    "Bluegrass": { MinBPM: 110, MaxBPM: 160 },
+    "Country Rock": { MinBPM: 100, MaxBPM: 140 },
+    "Western Swing": { MinBPM: 120, MaxBPM: 160 }
+  };
+
+  HipHopGenre = {
+    "Old School Hip-Hop": { MinBPM: 80, MaxBPM: 100 },
+    "Trap": { MinBPM: 130, MaxBPM: 175 },
+    "Gangsta Rap": { MinBPM: 85, MaxBPM: 105 },
+    "Conscious Hip-Hop": { MinBPM: 80, MaxBPM: 100 },
+    "Drill": { MinBPM: 130, MaxBPM: 150 },
+    "Mumble Rap": { MinBPM: 120, MaxBPM: 160 },
+    "Alternative Hip-Hop": { MinBPM: 85, MaxBPM: 110 },
+    "East Coast": { MinBPM: 85, MaxBPM: 100 },
+    "West Coast": { MinBPM: 90, MaxBPM: 105 },
+    "Southern Hip-Hop": { MinBPM: 70, MaxBPM: 100 },
+    "UK Grime": { MinBPM: 130, MaxBPM: 150 }
+  };
+
+  JazzGenre = {
+    "Bebop": { MinBPM: 160, MaxBPM: 300 },
+    "Swing": { MinBPM: 120, MaxBPM: 200 },
+    "Cool Jazz": { MinBPM: 80, MaxBPM: 140 },
+    "Modal Jazz": { MinBPM: 100, MaxBPM: 160 },
+    "Free Jazz": { MinBPM: 60, MaxBPM: 300 },
+    "Fusion": { MinBPM: 90, MaxBPM: 160 },
+    "Smooth Jazz": { MinBPM: 70, MaxBPM: 110 },
+    "Latin Jazz": { MinBPM: 120, MaxBPM: 180 },
+    "Nu Jazz": { MinBPM: 90, MaxBPM: 130 }
+  };
+
+  ClassicalGenre = {
+    "Baroque": { MinBPM: 60, MaxBPM: 120 },
+    "Classical Period": { MinBPM: 60, MaxBPM: 120 },
+    "Romantic": { MinBPM: 40, MaxBPM: 160 },
+    "Contemporary Classical": { MinBPM: 40, MaxBPM: 200 },
+    "Minimalist": { MinBPM: 60, MaxBPM: 150 },
+    "Opera": { MinBPM: 60, MaxBPM: 140 },
+    "Chamber Music": { MinBPM: 60, MaxBPM: 120 },
+    "Orchestral": { MinBPM: 60, MaxBPM: 140 }
+  };
+
+  PopGenre = {
+    "Mainstream Pop": { MinBPM: 90, MaxBPM: 130 },
+    "Indie Pop": { MinBPM: 85, MaxBPM: 125 },
+    "Synth Pop": { MinBPM: 100, MaxBPM: 130 },
+    "K-Pop": { MinBPM: 100, MaxBPM: 140 },
+    "J-Pop": { MinBPM: 100, MaxBPM: 140 },
+    "Dance Pop": { MinBPM: 110, MaxBPM: 130 },
+    "Electro Pop": { MinBPM: 110, MaxBPM: 130 },
+    "Art Pop": { MinBPM: 80, MaxBPM: 130 },
+    "Teen Pop": { MinBPM: 95, MaxBPM: 130 }
+  };
+
+  MetalGenre = {
+    "Heavy Metal": { MinBPM: 100, MaxBPM: 160 },
+    "Thrash Metal": { MinBPM: 140, MaxBPM: 220 },
+    "Death Metal": { MinBPM: 160, MaxBPM: 240 },
+    "Black Metal": { MinBPM: 150, MaxBPM: 220 },
+    "Doom Metal": { MinBPM: 60, MaxBPM: 100 },
+    "Power Metal": { MinBPM: 120, MaxBPM: 180 },
+    "Progressive Metal": { MinBPM: 90, MaxBPM: 180 },
+    "Nu Metal": { MinBPM: 90, MaxBPM: 140 },
+    "Metalcore": { MinBPM: 140, MaxBPM: 200 },
+    "Deathcore": { MinBPM: 160, MaxBPM: 260 },
+    "Industrial Metal": { MinBPM: 100, MaxBPM: 160 }
+  };
+
+  FolkGenre = {
+    "Traditional Folk": { MinBPM: 60, MaxBPM: 120 },
+    "Contemporary Folk": { MinBPM: 70, MaxBPM: 130 },
+    "Celtic": { MinBPM: 100, MaxBPM: 160 },
+    "Americana": { MinBPM: 70, MaxBPM: 120 },
+    "Singer-Songwriter": { MinBPM: 60, MaxBPM: 120 },
+    "Indie Folk": { MinBPM: 70, MaxBPM: 120 }
+  };
+
+  WorldGenre = {
+    "Reggae": { MinBPM: 60, MaxBPM: 100 },
+    "Afrobeat": { MinBPM: 100, MaxBPM: 130 },
+    "Latin": { MinBPM: 90, MaxBPM: 160 },
+    "Bossa Nova": { MinBPM: 70, MaxBPM: 100 },
+    "Samba": { MinBPM: 100, MaxBPM: 160 },
+    "Indian Classical": { MinBPM: 60, MaxBPM: 120 },
+    "Middle Eastern": { MinBPM: 80, MaxBPM: 140 },
+    "Flamenco": { MinBPM: 90, MaxBPM: 160 },
+    "Celtic": { MinBPM: 100, MaxBPM: 160 }
+  };
+
+  getMainGenres(): string[] {
+    return [
+      "Electronic", 
+      "Rock", 
+      "Country", 
+      "Hip-Hop", 
+      "Jazz", 
+      "Classical", 
+      "Pop", 
+      "Metal", 
+      "Folk", 
+      "World"
+    ];
+  }
+
+  getSubgenres(mainGenre: string): string[] {
+    switch(mainGenre) {
+      case "Electronic":
+        return Object.keys(this.ElectronicGenre);
+      case "Rock":
+        return Object.keys(this.RockGenre);
+      case "Country":
+        return Object.keys(this.CountryGenre);
+      case "Hip-Hop":
+        return Object.keys(this.HipHopGenre);
+      case "Jazz":
+        return Object.keys(this.JazzGenre);
+      case "Classical":
+        return Object.keys(this.ClassicalGenre);
+      case "Pop":
+        return Object.keys(this.PopGenre);
+      case "Metal":
+        return Object.keys(this.MetalGenre);
+      case "Folk":
+        return Object.keys(this.FolkGenre);
+      case "World":
+        return Object.keys(this.WorldGenre);
+      default:
+        return [];
+    }
+  }
+
+  getBPMRange(mainGenre: string, subgenre: string): {MinBPM: number, MaxBPM: number} | undefined {
+    switch(mainGenre) {
+      case "Electronic":
+        return this.ElectronicGenre[subgenre as keyof typeof this.ElectronicGenre];
+      case "Rock":
+        return this.RockGenre[subgenre as keyof typeof this.RockGenre];
+      case "Country":
+        return this.CountryGenre[subgenre as keyof typeof this.CountryGenre];
+      case "Hip-Hop":
+        return this.HipHopGenre[subgenre as keyof typeof this.HipHopGenre];
+      case "Jazz":
+        return this.JazzGenre[subgenre as keyof typeof this.JazzGenre];
+      case "Classical":
+        return this.ClassicalGenre[subgenre as keyof typeof this.ClassicalGenre];
+      case "Pop":
+        return this.PopGenre[subgenre as keyof typeof this.PopGenre];
+      case "Metal":
+        return this.MetalGenre[subgenre as keyof typeof this.MetalGenre];
+      case "Folk":
+        return this.FolkGenre[subgenre as keyof typeof this.FolkGenre];
+      case "World":
+        return this.WorldGenre[subgenre as keyof typeof this.WorldGenre];
+      default:
+        return undefined;
+    }
+  }
 
   musicalKeys = {
     "C Major": ["C", "D", "E", "F", "G", "A", "B"],

@@ -12,27 +12,63 @@ export class MusicRandomizerComponent {
   bpm = 0;
   selectedKey = '';
   notesInKey: string[] = [];
+  genreOptions: string[] = [];
+  selectedGenre = '';
+  subgenreOptions: string[] = [];
+  subgenre = '';
   chordProgression: string[] = [];
   chordsDisplay = '';
   vibe = '';
   melody = '';
 
-  constructor(private musicService: MusicService, public musicData: MusicDataService) {}
+  constructor(private musicService: MusicService, public musicData: MusicDataService) {
+    this.genreOptions = this.musicData.getMainGenres();
+    this.selectedGenre = '';
+  }
+
+  onGenreChange() {
+  }
+
+  updateBasedOnGenre() {
+    if (this.selectedGenre && this.subgenre) {
+      const bpmRange = this.musicData.getBPMRange(this.selectedGenre, this.subgenre);
+      if (bpmRange) {
+        this.bpm = Math.floor(Math.random() * (bpmRange.MaxBPM - bpmRange.MinBPM + 1)) + bpmRange.MinBPM;
+      }
+    }
+  }
 
   randomize() {
-    this.genre = this.getRandomGenre();
+    if (this.selectedGenre) {
+      const subgenres = this.musicData.getSubgenres(this.selectedGenre);
+      this.subgenre = subgenres[Math.floor(Math.random() * subgenres.length)];
+      this.genre = this.subgenre;
+      
+      const bpmRange = this.musicData.getBPMRange(this.selectedGenre, this.subgenre);
+      if (bpmRange) {
+        this.bpm = Math.floor(Math.random() * (bpmRange.MaxBPM - bpmRange.MinBPM + 1)) + bpmRange.MinBPM;
+      }
+    } else {
+      const mainGenres = this.musicData.getMainGenres();
+      const randomMainGenre = mainGenres[Math.floor(Math.random() * mainGenres.length)];
+      const subgenres = this.musicData.getSubgenres(randomMainGenre);
+      this.subgenre = subgenres[Math.floor(Math.random() * subgenres.length)];
+      
+      this.selectedGenre = randomMainGenre;
+      this.genre = this.subgenre;
+      
+      const bpmRange = this.musicData.getBPMRange(randomMainGenre, this.subgenre);
+      if (bpmRange) {
+        this.bpm = Math.floor(Math.random() * (bpmRange.MaxBPM - bpmRange.MinBPM + 1)) + bpmRange.MinBPM;
+      }
+    }
+    
     console.log(this.genre);
-    this.bpm = this.musicService.getRandomBPM(this.genre as keyof typeof this.musicData.genreBPMRanges);
     this.selectedKey = this.getRandomKey();
     this.notesInKey = this.musicData.musicalKeys[this.selectedKey as keyof typeof this.musicData.musicalKeys];
     this.chordProgression = this.musicService.generateChordProgression(this.notesInKey);
     this.chordsDisplay = this.musicService.generateChordsDisplay(this.chordProgression, this.notesInKey);
     this.vibe = this.musicService.generateRandomVibe();
-  }
-
-  getRandomGenre(): string {
-    const genres = Object.keys(this.musicData.genreBPMRanges);
-    return genres[Math.floor(Math.random() * genres.length)];
   }
 
   getRandomKey(): string {
